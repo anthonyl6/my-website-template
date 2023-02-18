@@ -26,3 +26,15 @@ services:
           - nginx
     depends_on:
       - tunnel
+      - nodejs-kspages
+  nodejs-kspages:
+    container_name: nodejs-kspages
+    image: nodejs-kspages
+    volumes:
+      - ./app/kspages:/var/lib/www
+    networks:
+      kspages:
+        aliases:
+          - nodejs-kspages
+    depends_on:
+      - tunnel
