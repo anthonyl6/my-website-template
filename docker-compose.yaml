@@ -1,0 +1,12 @@
+version: '3.9'
+networks:
+  kspages:
+    external: true
+services:
+  tunnel:
+    container_name: cloudflared-tunnel
+    image: cloudflared/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=value
