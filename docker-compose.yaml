@@ -4,9 +4,25 @@ networks:
     external: true
 services:
   tunnel:
-    container_name: cloudflared-tunnel
-    image: cloudflared/cloudflared:latest
+    container_name: cloudflared-tunnel-kspages
+    image: cloudflare/cloudflared:latest
     restart: unless-stopped
     command: tunnel run
     environment:
-      - TUNNEL_TOKEN=value
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN}
+    networks:
+      kspages:
+        aliases:
+          - cftunnel
+  nginx:
+    container_name: nginx-kspages
+    image: nginx:latest
+    volumes:
+      - ./data/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./data/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      kspages:
+        aliases:
+          - nginx
+    depends_on:
+      - tunnel
