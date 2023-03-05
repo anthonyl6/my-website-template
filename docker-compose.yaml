@@ -9,7 +9,7 @@ services:
     restart: unless-stopped
     command: tunnel run
     environment:
-      TUNNEL_TOKEN: ${TUNNEL_TOKEN}
+      TUNNEL_TOKEN: eyJhIjoiNzZiNGNhNGQ2ZTViYzgwNzIzM2U0MGRhYjcyODM0ZmIiLCJ0IjoiZDcyMGJjMGMtMDVkNS00NzYwLTk1M2MtMzM1MzEwODdhNjBkIiwicyI6IlpqY3hNRGd4WXpZdFkyUTJPQzAwTXpZNUxUaGhZV1V0TldZNU5qVTRPV0k1TkRaaSJ9
     networks:
       kspages:
         aliases:
